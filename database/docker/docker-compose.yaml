@@ -1,0 +1,15 @@
+version: '3.9'
+
+services:
+  mysql:
+    container_name: ${CONTAINER_NAME}
+    build: .
+    ports:
+      - ${DB_PORT_LOCAL}:${DB_PORT_MACHINE}
+    # volumes:
+    #   - ${PATH_LOCAL}:/var/lib/mysql
+    environment:
+      - MYSQL_ROOT_PASSWORD=${DB_ROOT_PASSWORD}
+      - MYSQL_PASSWORD=${DB_PASSWORD}
+      - MYSQL_USER=${DB_USER}
+      - MYSQL_DATABASE=${DB_NAME}
