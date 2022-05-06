@@ -58,16 +58,16 @@ Para conectar no MySQL Workbench os dados devem ser:
 
 - Hostname: 127.0.0.1
 - Port: 3306
-- Username: user_dindin_2022
-- Store in Keychain ou password: pass_dindin_2022
-- Default Schema: dindin
+- Username: user_dindin_agora_2022
+- Store in Keychain ou password: pass_dindin_agora_2022
+- Default Schema: dindinagora
 
 ## Criar ou atualizar o banco de dados
 
 Para criar o banco de dados pelo `sql` entrar na raíz do projeto e executar o comando a seguir na pasta `database/docker`:
 
 ```bash
-docker exec db_turma /bin/sh -c 'mysql -u root -p${DB_ROOT_PASSWORD} < /usr/sql/sources.sql'
+docker exec db_dindinagora /bin/sh -c 'mysql -u root -p${DB_ROOT_PASSWORD} < /usr/sql/sources.sql'
 ```
 
 Outra forma é pelo MySQL Workbench fazer o Forward do database para a conexão nova que fizemos no Docker.

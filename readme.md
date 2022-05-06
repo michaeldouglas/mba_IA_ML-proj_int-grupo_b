@@ -1,6 +1,6 @@
 # Grupo b
 
-Este repositório contem o nosso projeto da fintech **Din Din**
+Este repositório contem o nosso projeto da fintech **DinDinAgora**
 
 ## EER do banco
 
