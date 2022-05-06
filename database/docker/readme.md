@@ -12,15 +12,7 @@ Foi utilizado o Docker Compose sendo assim instalar também a parti do link:
 
 Já na página basta escolher o sistema operacional.
 
-## Configuração inicial docker
-
-Para executar você deve inicialmenente alterar o .env na linha: `5` e inserir o caminho do projeto em sua máquina:
-
-```bash
-PATH_LOCAL = ""
-```
-
-### Executar o banco de dados do projeto
+## Executar o banco de dados do projeto
 
 Uma vez tendo tudo instalado basta executar na raíz do projeto na pasta: `database/docker` o seguinte comando:
 
