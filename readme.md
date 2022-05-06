@@ -9,3 +9,7 @@ Este repositório contem o nosso projeto da fintech **DinDinAgora**
 Para encontrar o EER do nosso banco de dados basta navegar até a pasta:
 
 - [database/mwb/dindin.mwb](https://github.com/michaeldouglas/mba_IA_ML-proj_int-grupo_b/tree/md_version/database/mwb)
+
+## Teste do projeto
+
+Para subir o docker do projeto basta seguir a explicação [deste link](/database/docker).
