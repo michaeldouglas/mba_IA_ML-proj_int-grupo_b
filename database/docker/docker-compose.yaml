@@ -6,8 +6,6 @@ services:
     build: .
     ports:
       - ${DB_PORT_LOCAL}:${DB_PORT_MACHINE}
-    # volumes:
-    #   - ${PATH_LOCAL}:/var/lib/mysql
     environment:
       - MYSQL_ROOT_PASSWORD=${DB_ROOT_PASSWORD}
       - MYSQL_PASSWORD=${DB_PASSWORD}

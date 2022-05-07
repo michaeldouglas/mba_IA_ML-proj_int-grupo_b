@@ -41,7 +41,7 @@ docker-compose up -d
 Caso queira entrar na máquina virtual que foi criada execute o comando:
 
 ```bash
-docker exec -it db_turma bash -l
+docker exec -it db_turma bash
 ```
 
 ## Conectando no banco de dados
