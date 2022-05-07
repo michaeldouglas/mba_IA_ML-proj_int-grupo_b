@@ -8,7 +8,11 @@ Este repositório contem o nosso projeto da fintech **DinDinAgora**
 
 ## EER do banco
 
-Para encontrar o EER do nosso banco de dados basta navegar até a pasta:
+Imagem do modelo:
+
+[<img src="/database/EER.png">](/database/EER.png)
+
+Arquivo do EER do nosso banco de dados:
 
 - [database/mwb/dindin.mwb](/database/mwb)
 
