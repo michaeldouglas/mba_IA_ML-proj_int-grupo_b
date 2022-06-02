@@ -1,8 +1,8 @@
 -- Check table, if exists drop
-DROP TABLE IF EXISTS dindinagora.aberturas_conta_por_ano;
+DROP TABLE IF EXISTS grupob.aberturas_conta_por_ano;
 
 -- Create external table, if not exists
-CREATE EXTERNAL TABLE IF NOT EXISTS dindinagora.aberturas_conta_por_ano (
+CREATE EXTERNAL TABLE IF NOT EXISTS grupob.aberturas_conta_por_ano (
   id_conta int,
   data date,
   month char(10),
@@ -17,7 +17,10 @@ CREATE EXTERNAL TABLE IF NOT EXISTS dindinagora.aberturas_conta_por_ano (
 )
 PARTITIONED BY(year int)
 ROW FORMAT DELIMITED
-FIELDS TERMINATED BY ',' STORED AS TEXTFILE LOCATION '/app/dindinagora/data_aberturas';
+FIELDS TERMINATED BY ',' STORED AS TEXTFILE LOCATION '/app/grupob/data_aberturas';
+
+ALTER TABLE grupob.aberturas_conta_por_ano add partition(year=2017) location '/app/grupob/data_aberturas/year=2017';
+ALTER TABLE grupob.aberturas_conta_por_ano add partition(year=2018) location '/app/grupob/data_aberturas/year=2018';
 
 -- Check table
-SELECT * FROM dindinagora.aberturas_conta_por_ano;
+SELECT * FROM grupob.aberturas_conta_por_ano;

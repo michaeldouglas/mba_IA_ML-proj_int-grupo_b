@@ -1,8 +1,8 @@
 -- Check table, if exists drop
-DROP TABLE IF EXISTS dindinagora.aberturas_de_conta;
+DROP TABLE IF EXISTS grupob.aberturas_de_conta;
 
 -- Create external table, if not exists
-CREATE EXTERNAL TABLE IF NOT EXISTS dindinagora.aberturas_de_conta (
+CREATE EXTERNAL TABLE IF NOT EXISTS grupob.aberturas_de_conta (
   id_conta int,
   data date,
   year int,
@@ -17,7 +17,7 @@ CREATE EXTERNAL TABLE IF NOT EXISTS dindinagora.aberturas_de_conta (
   quarter int
 )
 ROW FORMAT DELIMITED
-FIELDS TERMINATED BY ',' STORED AS TEXTFILE LOCATION '/app/dindinagora/data_aberturas';
+FIELDS TERMINATED BY ',' STORED AS TEXTFILE LOCATION '/grupob/data_aberturas';
 
 -- Check table
-SELECT * FROM dindinagora.aberturas_de_conta;
+SELECT * FROM grupob.aberturas_de_conta;
