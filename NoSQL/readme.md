@@ -23,16 +23,15 @@ SELECT * from `produtos` INNER JOIN `tiposInvestimentos` ON `tiposInvestimentos`
 Analogamente, em um banco de dados MongoDB, digamos que eu tenha apenas uma coleção: produtos. Cada documento de produto tem um atributo chamado “tipos_de_investimentos”, que é uma lista de documentos incorporados. Parece algo como isto em JSON:
 
 ```json
-
 {
-  nome : Produto da Dim Dim,
-  data: 20/07/2022,
-  tipos_de_investimentos: [
-    {investimento: CDB},
-    {investimento: Ações},
-    {investimento: Fundo Imobiliário, liquidez : diária}
-]}
-
+  "nome": "Produto da Dim Dim",
+  "data": "20/07/2022",
+  "tipos_de_investimentos": [
+    { "investimento": "CDB" },
+    { "investimento": "Ações" },
+    { "investimento": "Fundo Imobiliário, liquidez : diária" }
+  ]
+}
 ```
 
 Ao analisar como o MongoDB trabalha com os documentos podemos dizer que é a melhor solução para resolver o nosso problema de performance para obtenção das microanálises de produtos junto as suas descrições e com isso melhorar a performance do nosso produto.
