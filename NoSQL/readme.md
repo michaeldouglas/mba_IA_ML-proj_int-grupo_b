@@ -1,6 +1,6 @@
 # Desenho final
 
-[<img src="projeto_final.png">](projeto_final.png)
+[<img src="../projeto_final.png">](../projeto_final.png)
 
 # Justificativa
 
