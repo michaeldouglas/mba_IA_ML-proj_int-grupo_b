@@ -1,0 +1,14 @@
+db.produtos.insert({
+    nome: "Produtos principais da DIM DIM",
+    data: "20/07/2022",
+    produtos: [{
+        nome: 'Cartão de débito DIM DIM',
+        taxas: null
+    }, {
+        nome: 'Cartão de crédito DIM DIM',
+        taxas: '3%'
+    }, {
+        nome: 'Talão de cheques DIM DIM',
+        taxas: '2%'
+    }
+]});

@@ -1,0 +1,20 @@
+db.produtos_de_investimentos.insert({
+    nome: "Produtos de investimentos DIM DIM",
+    data: "20/07/2022",
+    tipos_de_investimentos: [{
+        nome: 'Títulos de Capitalização',
+        descricao: 'O título de capitalização é uma forma de poupar dinheiro por um período e ter a oportunidade de participar de sorteios. Parte do valor que você paga no título é usada para formar seu capital, enquanto o restante serve para custear os sorteios e despesas operacionais.',
+        carencia: 360,
+        taxas: null
+    }, {
+        nome: 'FII',
+        descricao: 'Recomendações mensais feitas pelos nossos analistas para investir em Fundos Imobiliários.',
+        carencia: 0,
+        taxas: '1%'
+    }, {
+        nome: 'Ações',
+        descricao: 'Cobertura completa do mercado com preço, balanço e dividendos das ações das mais populares bolsas de valores do mundo.',
+        carencia: 0,
+        taxas: '3%'
+    }
+]});

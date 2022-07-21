@@ -1,7 +1,3 @@
-# Desenho final
-
-[<img src="../projeto_final.png">](../projeto_final.png)
-
 # Justificativa
 
 Escolhemos utilizar o **MongoDB** porque é um banco de dados orientado a documentos de alta performance, outro fator é que o banco de dados é open source e schema-free, esrito em C++.
