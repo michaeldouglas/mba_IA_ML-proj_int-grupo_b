@@ -4,11 +4,11 @@
 
 # Justificativa
 
-Escolhemos utilizar o MongoDB porque é um banco de dados orientado a documentos de alta performance, outro fator é que o banco de dados é open source e schema-free, esrito em C++.
+Escolhemos utilizar o **MongoDB** porque é um banco de dados orientado a documentos de alta performance, outro fator é que o banco de dados é open source e schema-free, esrito em C++.
 
-Após muito estudar verificamos que muitos falam de NoSql e do MongoDB, mas porque nós deveríamos usar no Dim Dim?
+Após muito estudar verificamos que muitos falam de NoSql e do **MongoDB**, mas porque nós deveríamos usar no Dim Dim?
 
-MongoDB é um banco NoSQL baseado em documento sem trações e preferencialmente sem joins. Ao testarmos ele em nosso projeto chegou-se a conclusão de que o resultado que se tem são consultas muito simples. Elas são mais fáceis de escrever. Elas são mais fáceis também de ajustar. Deixam os desenvolvedores fazerem seu trabalho mais facilmente.
+**MongoDB** é um banco NoSQL baseado em documento sem trações e preferencialmente sem joins. Ao testarmos ele em nosso projeto chegou-se a conclusão de que o resultado que se tem são consultas muito simples. Elas são mais fáceis de escrever. Elas são mais fáceis também de ajustar. Deixam os desenvolvedores fazerem seu trabalho mais facilmente.
 
 Em nosso estudo onde “produtos” possuem “tipos de investimentos”, existe um documento para cada um, com um investimento no documento de produtos. Vamos dizer que eu quero todos os tipos de investimentos que estão amarrados a um produto da Dim Dim.
 
@@ -20,7 +20,7 @@ SELECT * from `produtos` INNER JOIN `tiposInvestimentos` ON `tiposInvestimentos`
 
 ```
 
-Analogamente, em um banco de dados MongoDB, digamos que eu tenha apenas uma coleção: produtos. Cada documento de produto tem um atributo chamado “tipos_de_investimentos”, que é uma lista de documentos incorporados. Parece algo como isto em JSON:
+Analogamente, em um banco de dados **MongoDB**, digamos que eu tenha apenas uma coleção: produtos. Cada documento de produto tem um atributo chamado “tipos_de_investimentos”, que é uma lista de documentos incorporados. Parece algo como isto em JSON:
 
 ```json
 {
@@ -34,4 +34,4 @@ Analogamente, em um banco de dados MongoDB, digamos que eu tenha apenas uma cole
 }
 ```
 
-Ao analisar como o MongoDB trabalha com os documentos podemos dizer que é a melhor solução para resolver o nosso problema de performance para obtenção das microanálises de produtos junto as suas descrições e com isso melhorar a performance do nosso produto.
+Ao analisar como o **MongoDB** trabalha com os documentos podemos dizer que é a melhor solução para resolver o nosso problema de performance para obtenção das microanálises de produtos junto as suas descrições e com isso melhorar a performance do nosso produto.
