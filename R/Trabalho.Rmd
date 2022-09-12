@@ -1,0 +1,324 @@
+---
+title: "Trabalho "
+author: "Grupo B"
+date: "2022-09-10"
+output: html_document
+---
+
+# Sobre o trabalho - O que precisa entregar
+
+-   Utilizar o R Markdown para documentar o código com saída html
+-   Fazer análise exploratória das variáveis com medidas de resumo e gráficos.
+-   Fazer uma análise de cluster.
+
+Nós escolhemos a base Iris: <https://archive.ics.uci.edu/ml/datasets/Iris>
+
+O nosso conjunto de dados consiste em 50 amostras de cada uma das três espécies de flores Iris .
+
+### Informações dos atributos
+
+1.  sepal length in cm - **Comprimento da sépala em cm**
+2.  sepal width in cm - **Largura da sépala em cm**
+3.  petal length in cm - **Comprimento da pétala em cm**
+4.  petal width in cm - **Largura da pétala em cm**
+5.  class - **espécies estudadas**
+    1.  **Iris Setosa**
+    2.  **Iris Versicolour**
+    3.  **Iris Virginica**
+
+Quatro características (variáveis) foram medidas de cada amostra, são elas o comprimento e a largura da sépala e da pétala, em centímetros.
+
+As espécies alvo do nosso estudo:
+
+![](images/iris_tipo.png)
+
+```{r setup, include=FALSE}
+if (!require('dplyr')) 
+{
+  install.packages('dplyr');
+  library(dplyr);
+}
+if (!require('ggplot2')) 
+{
+  install.packages('ggplot2');
+  library(ggplot2);
+}
+if (!require('xtable')) 
+{
+  install.packages('xtable');
+  library(xtable);
+}
+```
+
+### Criação das variável necessária e da lista de colunas
+
+Aqui nós criamos a variável necessária para rodar nossa análise além disso também criamos uma lista para alterar o nome padrão das colunas.
+
+```{r variabels}
+urlDataSet <- 'http://archive.ics.uci.edu/ml/machine-learning-databases/iris/iris.data'
+
+colName <- c("sepala_comprimento", "sepala_largura", "petala_comprimento", "petala_largura","especies")
+```
+
+### Download da base
+
+Baixamos a base e alteramos o nome das colunas
+
+```{r dataBase}
+irisDataBase <- read.csv(url(urlDataSet), header = FALSE, col.names = colName)
+```
+
+Verificação do nome das colunas alteradas:
+
+```{r dataColName}
+irisDataBase %>% colnames()
+```
+
+### Primeiras análises
+
+Aqui nós realizaremos as primeiras análises da nossa base de dados. Executamos as funções:
+
+-   summary - Função para realizar uma análise estatística resumida
+-   head - Exibir os primeiros resultados
+-   str - Função para exibir a estrutura dos nossos dados
+-   Realizamos também uma validação para verificar se existe valores do tipo NA e a proporção com que ele existe para cada valor da base
+
+```{r irisDataBase}
+irisDataBase %>% head()
+irisDataBase %>% str()
+irisDataBase %>% summary()
+```
+
+```{r irisDataBaseNa}
+Count <- sum(is.na(irisDataBase))
+CalcProportion <- irisDataBase %>% nrow() / Count
+
+Proportion <- ifelse(is.infinite(CalcProportion), 0, CalcProportion)
+
+data.frame(Index = colnames(irisDataBase), Count, Proportion)
+```
+
+### Verificando a dimensionalidade dos dados
+
+Para verificar a dimensionalidade nós utilizamos a função dim(), a função então retorna que:
+
+-   **150 linhas** de observações e **5 colunas** de variáveis
+
+```{r irisDim}
+irisDataBase %>% dim()
+```
+
+### Verificação do desvio padrão
+
+A seguir nós realizamos uma análise do desvio padrão das variáveis:
+
+-   sepala_comprimento
+-   sepala_largura
+-   petala_comprimento
+-   petala_largura
+
+Antes de exibir os desvios padrões nós criamos uma função para evitar um pouco a duplicação de chamadas.
+
+Poderiamos ter realizado uma análise das variveis unicamente em um chamada, mas achamos mais didático analisar uma a uma.
+
+```{r irisDesvioParaoFunc}
+fcStandardDeviation <- function(database, variable){
+  if(variable %in% colnames(database)) {
+    result <- database %>% dplyr::select(all_of(variable))
+    
+    result[,] %>% sd()
+  } else {
+    return(FALSE)
+  }
+}
+```
+
+```{r irisDesvioParao, results='asis'}
+desvio_sepala_comprimento = fcStandardDeviation(irisDataBase, "sepala_comprimento")
+desvio_sepala_largura = fcStandardDeviation(irisDataBase, "sepala_largura")
+desvio_petala_comprimento = fcStandardDeviation(irisDataBase, "petala_comprimento")
+desvio_petala_largura = fcStandardDeviation(irisDataBase, "petala_largura")
+
+resultadoDesvios <- data.frame(
+  desvio_sepala_comprimento,
+  desvio_sepala_largura,
+  desvio_petala_comprimento,
+  desvio_petala_largura
+)
+
+print(xtable(resultadoDesvios), type = "html")
+```
+
+O resultado exibe o nosso grau de dispersão dos nossos conjuntos de dados.
+
+### Análise de quantil
+
+Iremos observar o quantil das variáveis:
+
+-   sepala_comprimento
+-   sepala_largura
+-   petala_comprimento
+-   petala_largura
+
+Criamos também uma função para retornar os quantile, poderimos ter feito o resultado diretamente usando uma função apply:
+
+```{r irisQuantileExample}
+apply(iris[,1:4], 2, quantile)
+```
+
+Porém achamos mais didático deixar uma função e separar o valor em um DataFrame
+
+```{r irisQuantileFunc}
+fcQuantile <- function(database, variable){
+  if(variable %in% colnames(database)) {
+    result <- database %>% dplyr::select(all_of(variable))
+    
+    result[,] %>% quantile()
+  } else {
+    return(FALSE)
+  }
+}
+```
+
+```{r irisQuantileDataFrame, results='asis'}
+quantile_sepala_comprimento = fcQuantile(irisDataBase, "sepala_comprimento")
+quantile_sepala_largura = fcQuantile(irisDataBase, "sepala_largura")
+quantile_petala_comprimento = fcQuantile(irisDataBase, "petala_comprimento")
+quantile_petala_largura = fcQuantile(irisDataBase, "petala_largura")
+
+resultadoQuantile <- data.frame(
+  quantile_sepala_comprimento,
+  quantile_sepala_largura,
+  quantile_petala_comprimento,
+  quantile_petala_largura
+)
+
+print(xtable(resultadoQuantile), type = "html")
+```
+
+### Agrupamento dos dados
+
+Realizamos o agrupamento das espécies, para então realizar uma análise da média por variável agrupada:
+
+```{r irisGroupAna, results='asis'}
+irisDataBaseGroup <- irisDataBase %>% group_by(especies) %>% 
+  summarise(
+    comprimento_medio_sepala = mean(sepala_comprimento, na.rm = TRUE),
+    largura_media_sepala = mean(sepala_largura, na.rm = TRUE),
+    comprimento_medio_petala = mean(petala_comprimento, na.rm = TRUE),
+    largura_media_petala = mean(petala_largura, na.rm = TRUE),
+)
+
+print(xtable(irisDataBaseGroup), type = "html")
+```
+
+A partir do nosso agrupamento já somos capazes de determinar os tamanhos médios de sepala e petala de cada espécie.
+
+## Agrupamento pelo desvios
+
+Agora nós vamos agrupar as espécies com seus desvios padrões 
+
+```{r irisGroupDesv, results='asis'}
+irisDataBaseGroupDesv <- irisDataBase %>% group_by(especies) %>% 
+  summarise(
+    desvio_comprimento_sepala = sd(sepala_comprimento, na.rm = TRUE),
+    desvio_largura_sepala = sd(sepala_largura, na.rm = TRUE),
+    desvio_comprimento_petala = sd(petala_comprimento, na.rm = TRUE),
+    desvio_largura_petala = sd(petala_largura, na.rm = TRUE),
+)
+
+print(xtable(irisDataBaseGroupDesv), type = "html")
+```
+
+## Categorização com base em quartis
+
+Nós criaremos uma variável categórica com base no quartil a partir das variáveis.
+
+```{r irisBreakQuartis}
+quartils_comprimento_sepala<- cut(irisDataBase$sepala_comprimento, breaks=quantile(irisDataBase$sepala_comprimento), include.lowes=T)
+
+irisDataBaseQuartis <- irisDataBase
+
+irisDataBaseQuartis$sepala_comprimento_quartil_grupo <- quartils_comprimento_sepala
+
+result <- aggregate(.~especies+sepala_comprimento_quartil_grupo, irisDataBaseQuartis, mean)
+```
+
+Unificamos os dados e construimos uma tabela das contagens dos quartis
+
+### CrossTable dos quartis de comprimento de sepala
+
+```{r irisTableQuartis, results='asis'}
+
+resultQuartisSepalaComprimento <- table(irisDataBaseQuartis$especies, irisDataBaseQuartis$sepala_comprimento_quartil_grupo)
+
+print(xtable(resultQuartisSepalaComprimento), type = "html")
+```
+
+## Histograma das variáveis
+
+Nós agora iremos análiser o histograma das variáveis:
+
+-   sepala_comprimento
+-   sepala_largura
+-   petala_comprimento
+-   petala_largura
+
+### Histograma comprimento da sepala
+
+```{r irisQplotComprimeiro}
+hist(irisDataBase$sepala_comprimento, xlab = 'comprimento da sepala', ylab = 'Frequencia do comprimento da sepala em (cm)', main = 'Histograma comprimento da sepala', col = 'red')
+```
+
+### Histograma largura da sepala
+
+```{r irisQplotSepalaLargura}
+hist(irisDataBase$sepala_largura, xlab = 'largura da sepala', ylab = 'Frequencia da largura da sepala em (cm)', main = 'Histograma largura da sepala', col = 'blue')
+```
+
+### Histograma comprimento da petala
+
+```{r irisQplotComprimeiroPetala}
+hist(irisDataBase$petala_comprimento, xlab = 'comprimento da petala', ylab = 'Frequencia do comprimento da petala em (cm)', main = 'Histograma comprimento da petala', col = 'green')
+```
+
+### Histograma largura da petala
+
+```{r irisQplotLarguraPetala}
+hist(irisDataBase$petala_largura, xlab = 'largura da petala', ylab = 'Frequencia da largura da petala em (cm)', main = 'Histograma largura da petala', col = 'yellow')
+```
+
+## Boxplot das variáveis
+
+Nós agora iremos criar os boxplots das variáveis:
+
+-   sepala_comprimento
+-   sepala_largura
+-   petala_comprimento
+-   petala_largura
+
+E verificaremos se existem outliers em nossos dados.
+
+### Boxplot largura Sepala
+
+```{r irisBoxPlotLarguraSepala}
+boxplot(sepala_largura ~ especies, data=irisDataBase, xlab = 'largura da sepala', ylab = 'Frequencia', main = 'Histograma largura da sepala', col = 'blue')
+```
+
+### Boxplot comprimento Sepala
+
+```{r irisBoxPlotComprimentoSepala}
+boxplot(sepala_comprimento ~ especies, data=irisDataBase, xlab = 'comprimento da sepala', ylab = 'Frequencia', main = 'Histograma comprimento da sepala', col = 'red')
+```
+
+### Boxplot comprimento da petala
+
+```{r irisBoxPlotComprimentoPetala}
+boxplot(petala_comprimento ~ especies, data=irisDataBase, xlab = 'comprimento da petala', ylab = 'Frequencia', main = 'Histograma comprimento da petala', col = 'green')
+```
+
+### Boxplot largura da petala
+
+```{r irisBoxPlotLarguraPetala}
+boxplot(petala_largura ~ especies, data=irisDataBase, xlab = 'largura da petala', ylab = 'Frequencia', main = 'Histograma largura da petala', col = 'yellow')
+```
