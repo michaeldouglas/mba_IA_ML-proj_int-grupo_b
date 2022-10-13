@@ -1,0 +1,473 @@
+<!DOCTYPE html>
+
+<html lang="pt-br">
+
+<head>
+	<meta charset="utf-8">
+	<title>Titanic | Fiap</title>
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="description" content="Parallax HTML5 Template">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+	<meta name="author" content="Themefisher">
+	<meta name="generator" content="Themefisher Meghna Template v1.0">
+	<link rel="shortcut icon" href="https://www.fiap.com.br/wp-content/themes/fiap2016/images/favicon.ico" />
+
+	<!-- CSS
+		================================================== -->
+	<!-- Fontawesome Icon font -->
+	<link rel="stylesheet" href="{{ url_for('static', filename='plugins/themefisher-font/style.css') }}">
+	<!-- bootstrap.min css -->
+	<link rel="stylesheet" href="{{ url_for('static', filename='plugins/bootstrap/bootstrap.min.css') }}">
+	<!-- Animate.css -->
+	<link rel="stylesheet" href="{{ url_for('static', filename='plugins/animate-css/animate.css') }}">
+	<!-- Magnific popup css -->
+	<link rel="stylesheet" href="{{ url_for('static', filename='plugins/magnific-popup/dist/magnific-popup.css') }}">
+	<!-- Slick Carousel -->
+	<link rel="stylesheet" href="{{ url_for('static', filename='plugins/slick-carousel/slick.css') }}">
+	<link rel="stylesheet" href="{{ url_for('static', filename='plugins/slick-carousel/slick-theme.css') }}">
+	<!-- Main Stylesheet -->
+	<link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+
+
+</head>
+
+<body id="home" data-spy="scroll" data-target=".navbar-nav" data-offset="80">
+	<!--
+	Start Preloader
+	==================================== -->
+	<div class="preloader">
+		<div class="sk-cube-grid">
+			<div class="sk-cube sk-cube1"></div>
+			<div class="sk-cube sk-cube2"></div>
+			<div class="sk-cube sk-cube3"></div>
+			<div class="sk-cube sk-cube4"></div>
+			<div class="sk-cube sk-cube5"></div>
+			<div class="sk-cube sk-cube6"></div>
+			<div class="sk-cube sk-cube7"></div>
+			<div class="sk-cube sk-cube8"></div>
+			<div class="sk-cube sk-cube9"></div>
+		</div>
+	</div>
+	<!-- End Preloader
+	==================================== -->
+
+	<!--
+Welcome Slider
+==================================== -->
+
+	<section class="hero-area overlay"
+		style="background-image: url('{{ url_for('static', filename='images/banner/titanic.jpeg') }}');">
+		<!-- <video autoplay muted loop class="hero-video">
+		<source src="images/banner/hero-video.mp4" type="video/mp4">
+	</video> -->
+		<div class="block">
+			<div class="video-button mb-5">
+				<a class="popup-video" href="https://www.youtube.com/watch?v=x40SAJS2whY">
+					<i class="tf-ion-play"></i>
+				</a>
+			</div>
+			<h1>Dataset Titanic</h1>
+			<p>Para o nosso exemplo escolhemos o conjunto de dados do Titanic que é um problema comum de classificação
+			</p>
+			<a href="#team-skills" class="btn btn-transparent smooth-scroll">Explore a base</a>
+		</div>
+	</section>
+
+	<!-- 
+Sticky Navigation
+==================================== -->
+	<header id="navigation" class="navigation">
+		<div class="container">
+			<div class="navbar-header w-100">
+				<nav class="navbar navbar-expand-lg navbar-dark px-0">
+					<!-- logo -->
+					<a class="navbar-brand logo" href="index.html">
+						<!-- <img src="images/logo.png" alt="Website Logo" /> -->
+						<svg width="40px" height="40px" viewBox="0 0 45 44" version="1.1"
+							xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+							<g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+								<g id="Group" transform="translate(2.000000, 2.000000)" stroke="#57CBCC"
+									stroke-width="3">
+									<ellipse id="Oval" cx="20.5" cy="20" rx="20.5" ry="20"></ellipse>
+									<path d="M6,7 L33.5,34.5" id="Line-2" stroke-linecap="square"></path>
+									<path d="M21,20 L34,7" id="Line-3" stroke-linecap="square"></path>
+								</g>
+							</g>
+						</svg>
+					</a>
+					<!-- /logo -->
+
+					<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar01"
+						aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+						<span class="navbar-toggler-icon"></span>
+					</button>
+
+					<div class="collapse navbar-collapse" id="navbar01">
+						<ul class="navbar-nav navigation-menu ml-auto">
+							<li class="nav-item">
+								<a class="nav-link" href="#home">Home</a>
+							</li>
+							<li class="nav-item">
+								<a class="nav-link" href="#team-skills">Sobre a base</a>
+							</li>
+							<li class="nav-item">
+								<a class="nav-link" href="#contact-us">Previsão Titanic</a>
+							</li>
+						</ul>
+					</div>
+				</nav>
+			</div>
+		</div>
+	</header>
+	<!--
+End Sticky Navigation
+==================================== -->
+
+
+	<!-- Start Team Skills
+		=========================================== -->
+
+	<section id="team-skills" class="parallax-section section section-bg overly">
+		<div class="container">
+			<div class="row">
+				<!-- section title -->
+				<div class="col-md-12">
+					<div class="title text-center">
+						<h2>Sobre a <span class="color">base</span></h2>
+						<div class="border"></div>
+					</div>
+				</div>
+				<!-- /section title -->
+			</div> <!-- End row -->
+			<div class="row">
+				<div class="col-md-6">
+					<h2>Sobre o Dataset do Titanic</h2>
+					<p>Nós obtemos a base a partir do <a target="_blank"
+							href="https://www.kaggle.com/c/titanic/data">Kaggle</a>
+						e criamos uma predição de um rótulo (label) acerca da sobrevivência de uma passageiro, a partir
+						disso conseguimos ser capazes de responder se o passageiro conseguiu viver ou morreu na
+						tragédia.</p>
+					<img class="img-fluid" src="{{ url_for('static', filename='images/about/company-growth.png') }}"
+						alt="">
+				</div>
+				<div class="col-md-6 mt-4 mt-md-0">
+					<h2>Variáveis</h2>
+					<ul class="skill-bar">
+						<li>
+							<p><span>pclass-</span> Classe do passageiro (1 = primeira, 2 = segunda, 3 = terceira)</p>
+						</li>
+						<li>
+							<p><span>survived-</span> Sobreviveu (0 = não, 1 = sim)</p>
+						</li>
+						<li>
+							<p><span>name-</span> Nome do passageiro</p>
+						</li>
+						<li>
+							<p><span>sex-</span> Sexo do passageiro</p>
+						</li>
+						<li>
+							<p><span>age-</span> Idade do passageiro</p>
+						</li>
+						<li>
+							<p><span>sibsp-</span> Número de irmãos/espaosa(o) a bordo com o passageiro</p>
+						</li>
+						<li>
+							<p><span>parch-</span> Número de pais/filhos a bordo com o passageiro</p>
+						</li>
+						<li>
+							<p><span>ticket-</span> Número da passagem</p>
+						</li>
+						<li>
+							<p><span>fare-</span> Preço da passagem</p>
+						</li>
+						<li>
+							<p><span>cabin-</span> cabine</p>
+						</li>
+						<li>
+							<p><span>embarked-</span> Local em que o passageiro embarcou
+							<ul>
+								<li>&nbsp; C = Cherbourg</li>
+								<li>&nbsp; Q = Queenstown</li>
+								<li>&nbsp; S = Southamption</li>
+							</ul>
+							</p>
+						</li>
+						<li>
+							<p><span>boat-</span> Bote salva-vidas</p>
+						</li>
+						<li>
+							<p><span>body-</span> Número de identificação do corp</p>
+						</li>
+						<li>
+							<p><span>home.dest-</span> Onde o passageiro morava e o destino que estava indo</p>
+						</li>
+					</ul>
+				</div>
+			</div>
+		</div> <!-- End container -->
+	</section> <!-- End section -->
+
+
+	<!-- Srart Contact Us
+=========================================== -->
+	<section id="contact-us" class="contact-us section-bg">
+		<div class="container">
+			<div class="row">
+
+				<div class="col-12">
+					<!-- section title -->
+					<div class="title text-center wow fadeIn" data-wow-duration="500ms">
+						<h2>Previsão <span class="color"> Titanic</span></h2>
+						<div class="border"></div>
+					</div>
+					<!-- /section title -->
+				</div>
+
+				<!-- Contact Details -->
+				<div class="contact-info col-lg-6 wow fadeInUp" data-wow-duration="500ms">
+					<h3>Projeto Acadêmico</h3>
+					<p>Este projeto é puramente acadêmico e foi criado para estudo da base do Titanic. Com eles podemos
+						verificar se o passageiro do Titanic conseguiu sobreviver ou morreu na tragédia.</p>
+
+				</div>
+				<!-- / End Contact Details -->
+
+				<!-- Contact Form -->
+				<div class="contact-form col-lg-6 mt-4 mt-lg-0 wow fadeInUp" data-wow-duration="500ms"
+					data-wow-delay="300ms">
+					<form id="contact-form" role="form">
+
+						<div class="form-group">
+							<p class="text-white">Classe do passageiro:</p>
+							<label class="radio-inline text-white">
+								<input type="radio" name="pclass" id="pclass" value="1"> Primeira
+							</label>
+							<label class="radio-inline text-white">
+								<input type="radio" name="pclass" id="pclass" value="2"> Segunda
+							</label>
+							<label class="radio-inline text-white">
+								<input type="radio" name="pclass" checked id="pclass" value="3"> Terceira
+							</label>
+						</div>
+
+						<div class="form-group">
+							<label class="text-white" for="age">Idade do passageiro</label>
+							<input type="number" class="form-control text-white" name="age" id="age" placeholder="Idade"
+								value="30" />
+						</div>
+
+						<div class="form-group">
+							<label class="text-white" for="sibsp">Número de irmãos/esposa(o) a bordo com o
+								passageiro</label>
+							<input type="number" class="form-control text-white" name="sibsp" id="sibsp"
+								placeholder="Digite o total" value="1" />
+						</div>
+
+						<div class="form-group">
+							<label class="text-white" for="parch">Número de pais/filhos a bordo com o passageiro</label>
+							<input type="number" class="form-control text-white" name="parch" id="parch"
+								placeholder="Digite o total" value="1" />
+						</div>
+
+						<div class="form-group">
+							<label class="text-white" for="fare">Preço da passagem</label>
+							<input type="number" class="form-control text-white" name="fare" id="fare"
+								placeholder="Digite o total" value="40" />
+						</div>
+
+						<div class="form-group">
+							<p class="text-white">Sexo:</p>
+							<label class="radio-inline text-white">
+								<input type="radio" name="sex_male" checked id="sex_male" value="0"> Feminino
+							</label>
+							<label class="radio-inline text-white">
+								<input type="radio" name="sex_male" id="sex_male" value="1"> Masculino
+							</label>
+						</div>
+
+						<div class="form-group">
+							<p class="text-white">Embarcou em Queenstown:</p>
+							<label class="radio-inline text-white">
+								<input type="checkbox" name="embarked_Q" checked id="embarked_Q" value="1"> Queenstown
+							</label>
+						</div>
+
+						<div class="form-group">
+							<p class="text-white">Embarcou em Southamption:</p>
+							<label class="radio-inline text-white">
+								<input type="checkbox" name="embarked_S" checked id="embarked_S" value="1"> Southamption
+							</label>
+						</div>
+
+						<div id="cf-submit">
+							<input type="button" id="contact-submit" class="btn btn-transparent" value="SOBREVIVEU?">
+						</div>
+
+					</form>
+				</div>
+				<!-- ./End Contact Form -->
+
+			</div> <!-- end row -->
+		</div> <!-- end container -->
+
+	</section> <!-- end section -->
+
+	<!-- end Contact Area
+========================================== -->
+	<footer id="footer" class="bg-one">
+		<div class="container">
+			<div class="row wow fadeInUp" data-wow-duration="500ms">
+				<div class="col-lg-12">
+
+					<!-- copyright -->
+					<div class="copyright text-center">
+						<a href="index.html">
+							<!-- <img src="images/logo-meghna.png" alt="Meghna" />  -->
+							<svg width="40px" height="40px" viewBox="0 0 45 44" version="1.1"
+								xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+								<g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+									<g id="Group" transform="translate(2.000000, 2.000000)" stroke="#57CBCC"
+										stroke-width="3">
+										<ellipse id="Oval" cx="20.5" cy="20" rx="20.5" ry="20"></ellipse>
+										<path d="M6,7 L33.5,34.5" id="Line-2" stroke-linecap="square"></path>
+										<path d="M21,20 L34,7" id="Line-3" stroke-linecap="square"></path>
+									</g>
+								</g>
+							</svg>
+						</a>
+
+						<p class="mt-3">Copyright
+							&copy;
+							<script>
+								document.write(new Date().getFullYear())
+							</script>. All Rights Reserved. <br> Designed &amp; Developed by <a
+								href="http://www.themefisher.com">Themefisher</a>.
+						</p>
+					</div>
+					<!-- /copyright -->
+
+				</div> <!-- end col lg 12 -->
+			</div> <!-- end row -->
+		</div> <!-- end container -->
+	</footer> <!-- end footer -->
+
+	<!-- Modal -->
+	<div class="modal fade" id="survived" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
+		aria-hidden="true">
+		<div class="modal-dialog modal-dialog-centered" role="document">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h5 class="modal-title" id="exampleModalLongTitle">Sobreviveu</h5>
+					<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button>
+				</div>
+				<div class="modal-body">
+					<div class="alert alert-success" role="alert">
+						<strong>Sobreviveu</strong>
+						O tripulante sobreviveu
+					</div>
+
+					<img src="https://aventurasnahistoria.uol.com.br/media/_versions/capa_titanic_widelg.jpg"
+						class="img-responsive img-thumbnail">
+
+
+				</div>
+				<div class="modal-footer">
+					<button type="button" style="background-color: #57cbcc;" class="btn btn-transparent"
+						data-dismiss="modal">Fechar</button>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="modal fade" id="died" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
+		aria-hidden="true">
+		<div class="modal-dialog modal-dialog-centered" role="document">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h5 class="modal-title" id="exampleModalLongTitle">Sobreviveu</h5>
+					<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button>
+				</div>
+				<div class="modal-body">
+					<div class="alert alert-danger" role="alert">
+						<strong>Morreu</strong>
+						O tripulante morreu
+					</div>
+
+					<img src="https://bordalo.observador.pt/v2/rs:fill:600/c:770:433:nowe:0:0/q:85/plain/https://s3.observador.pt/wp-content/uploads/2016/02/04121326/titanic-capa_770x433_acf_cropped.jpg"
+						class="img-responsive img-thumbnail">
+
+
+				</div>
+				<div class="modal-footer">
+					<button type="button" style="background-color: #57cbcc;" class="btn btn-transparent"
+						data-dismiss="modal">Fechar</button>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<!-- 
+	Essential Scripts
+	=====================================-->
+
+	<!-- Main jQuery -->
+	<script src="{{ url_for('static', filename='plugins/jquery/jquery.min.js') }}"></script>
+	<!-- Bootstrap 3.1 -->
+	<script src="{{ url_for('static', filename='plugins/bootstrap/bootstrap.min.js') }}"></script>
+	<!-- Slick Carousel -->
+	<script src="{{ url_for('static', filename='plugins/slick-carousel/slick.min.js') }}"></script>
+	<!-- Portfolio Filtering -->
+	<script src="{{ url_for('static', filename='plugins/filterzr/jquery.filterizr.min.js') }}"></script>
+	<!-- Magnific popup -->
+	<script src="{{ url_for('static', filename='plugins/magnific-popup/dist/jquery.magnific-popup.min.js') }}"></script>
+	<!-- wow.min Script -->
+	<script src="{{ url_for('static', filename='plugins/wow/wow.min.js') }}"></script>
+	<!-- Custom js -->
+	<script src="{{ url_for('static', filename='js/script.js') }}"></script>
+
+	<script>
+		function getFormData($form) {
+			var unindexed_array = $form.serializeArray();
+			var indexed_array = {};
+
+			$.map(unindexed_array, function (n, i) {
+				indexed_array[n['name']] = n['value'];
+			});
+
+			return indexed_array;
+		}
+
+		$(document).ready(() => {
+			$("#contact-submit").click(() => {
+				const $form = $("form");
+				const data = getFormData($form);
+
+				$.ajax({
+					"url": "/predict",
+					"method": "POST",
+					"timeout": 0,
+					"headers": {
+						"Content-Type": "application/json"
+					},
+					"data": JSON.stringify(data),
+				}).done(function (response) {
+					if (response.survived) {
+						$('#survived').modal();
+					} else {
+						$('#died').modal();
+
+					}
+				});
+
+			});
+		});
+
+	</script>
+
+</body>
+
+</html>

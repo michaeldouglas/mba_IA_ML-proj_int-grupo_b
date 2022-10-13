@@ -4,3 +4,5 @@
 .DS_Store
 .DS_Store
 bigdata_docker/data
+Python/trabalho-titanic-fiap/env
+Python/trabalho-titanic-fiap/__pycache__
