@@ -11,3 +11,5 @@ Inicialmente devemos entrar no link: https://portal.azure.com/#allservices e ent
 clicar em containers e na sequência escolher a opção **Registros de contêiner**
 
 ![Registrar o contêiner](docs/images/1.png)
+
+Na sequência 
