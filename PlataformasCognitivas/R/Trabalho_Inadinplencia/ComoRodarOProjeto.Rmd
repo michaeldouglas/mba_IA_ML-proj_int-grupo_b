@@ -1,0 +1,13 @@
+---
+title: "Como subir o projeto no Azure"
+author: "Michael Douglas Barbosa Araujo"
+date: "12/7/2022"
+output: html_document
+---
+
+## Subindo o container no Azure
+
+Inicialmente devemos entrar no link: https://portal.azure.com/#allservices e então 
+clicar em containers e na sequência escolher a opção **Registros de contêiner**
+
+![Registrar o contêiner](docs/images/1.png)
