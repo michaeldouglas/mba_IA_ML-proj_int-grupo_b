@@ -1,0 +1,103 @@
+---
+title: "plataformas_cogn"
+author: "Alison_Leonardo_Michael"
+date: "2022-12-04"
+output:
+  html_document: default
+  pdf_document: default
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+install.packages("tidyverse")
+library(dplyr)
+library(tidyr)
+library(ggplot2)
+if(!file.exists('data')){
+  dir.create('data')
+}
+```
+
+## Trabalho final da disciplina de Plataformas Cognitivas
+
+## Análise exploratória e criação de modelo de regressão de dados de inadimplencia de clientes.
+
+## Importando os dados e visualizando um resumo de informações
+
+```{r}
+#file.url='https://archive.ics.uci.edu/ml/machine-learning-databases/00560/SeoulBikeData.csv'
+#file.local=file.path('./data', basename(file.url))
+#download.file(url = file.url, destfile = file.local, mode = 'wb')
+data <- read.csv2("./data/analise_credito_data_raw.csv", fileEncoding="latin1", sep = ",")
+glimpse(data)
+
+```
+
+## Avaliar balanceamento das bases
+
+```{r}
+#file.url='https://archive.ics.uci.edu/ml/machine-learning-databases/00560/SeoulBikeData.csv'
+#file.local=file.path('./data', basename(file.url))
+#download.file(url = file.url, destfile = file.local, mode = 'wb')
+g <- ggplot(data, aes(Status))
+g + geom_bar()
+
+```
+
+# Checar valores nulos
+
+```{r}
+sapply(data, function(x) sum(is.na(x)))
+```
+
+```{r}
+colnames(data)
+```
+
+```{r}
+data_cleaned <- subset(data, select = -c(ID, year, term, Secured_by , construction_type,  Security_Type, dtir1 ))
+
+str(data_cleaned)
+```
+
+# Remover nulos das variaveis categoricas.
+
+```{r}
+data_cleaned_subset <- data_cleaned[, c("loan_limit","approv_in_adv", "loan_purpose","Neg_ammortization", "age", "submission_of_application")]
+data_cleaned_no_cat_NA <- data_cleaned[complete.cases(data_cleaned_subset),]
+```
+
+```{r}
+str(data_cleaned_no_cat_NA)
+```
+
+```{r}
+# impute the NAs in upfront charges by 0 because of their correspondence with the open charge variable. Every nopc value in open_credit corresponds to an NA in  Upfront_charges, but when you have an open credit, the bank may demand a charge from you. I think it will be appropriate to put 0 in place of the NA values
+index <- is.na(data_cleaned_no_cat_NA$Upfront_charges)  
+data_cleaned_no_cat_NA[index] <- 0
+```
+
+```{r}
+sapply(data_cleaned_no_cat_NA, function(x) sum(is.na(x)))
+```
+
+```{r}
+# The NAs in property_value are heavily linked to pr in occupancy_type. Will use median imputation for that 
+df <- data_cleaned_no_cat_NA %>% mutate(across(property_value, ~replace_na(., median(., na.rm=TRUE))))
+df_cleaned <- df %>% mutate(across(income, ~replace_na(., median(., na.rm = TRUE))))
+
+##data_cleaned_no_cat_NA$property_value <- lapply(data_cleaned_no_cat_NA$property_value, median)
+```
+
+```{r}
+sapply(df_cleaned, function(x) sum(is.na(x)))
+```
+```{r}
+df_cleaned$Neg_ammortization <- ifelse(df_cleaned$Neg_ammortization == "neg_amm", TRUE , FALSE )
+df_cleaned$interest_only <- ifelse(df_cleaned$interest_only == "int_only", TRUE , FALSE )
+df_cleaned$lump_sum_payment <- ifelse(df_cleaned$lump_sum_payment == "lpsm", TRUE , FALSE )
+df_cleaned$business_or_commercial <- ifelse(df_cleaned$business_or_commercial == "b/c", TRUE , FALSE )
+df_cleaned$open_credit <- ifelse(df_cleaned$open_credit == "opc", TRUE , FALSE )
+df_cleaned$approv_in_adv <- ifelse(df_cleaned$approv_in_adv == "pre", TRUE , FALSE )
+```
+

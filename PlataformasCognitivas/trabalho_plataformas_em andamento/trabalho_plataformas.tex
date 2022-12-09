@@ -1,0 +1,410 @@
+% Options for packages loaded elsewhere
+\PassOptionsToPackage{unicode}{hyperref}
+\PassOptionsToPackage{hyphens}{url}
+%
+\documentclass[
+]{article}
+\usepackage{amsmath,amssymb}
+\usepackage{lmodern}
+\usepackage{iftex}
+\ifPDFTeX
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{textcomp} % provide euro and other symbols
+\else % if luatex or xetex
+  \usepackage{unicode-math}
+  \defaultfontfeatures{Scale=MatchLowercase}
+  \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
+\fi
+% Use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\IfFileExists{microtype.sty}{% use microtype if available
+  \usepackage[]{microtype}
+  \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\makeatletter
+\@ifundefined{KOMAClassName}{% if non-KOMA class
+  \IfFileExists{parskip.sty}{%
+    \usepackage{parskip}
+  }{% else
+    \setlength{\parindent}{0pt}
+    \setlength{\parskip}{6pt plus 2pt minus 1pt}}
+}{% if KOMA class
+  \KOMAoptions{parskip=half}}
+\makeatother
+\usepackage{xcolor}
+\usepackage[margin=1in]{geometry}
+\usepackage{color}
+\usepackage{fancyvrb}
+\newcommand{\VerbBar}{|}
+\newcommand{\VERB}{\Verb[commandchars=\\\{\}]}
+\DefineVerbatimEnvironment{Highlighting}{Verbatim}{commandchars=\\\{\}}
+% Add ',fontsize=\small' for more characters per line
+\usepackage{framed}
+\definecolor{shadecolor}{RGB}{248,248,248}
+\newenvironment{Shaded}{\begin{snugshade}}{\end{snugshade}}
+\newcommand{\AlertTok}[1]{\textcolor[rgb]{0.94,0.16,0.16}{#1}}
+\newcommand{\AnnotationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\AttributeTok}[1]{\textcolor[rgb]{0.77,0.63,0.00}{#1}}
+\newcommand{\BaseNTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\BuiltInTok}[1]{#1}
+\newcommand{\CharTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\CommentTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{#1}}}
+\newcommand{\CommentVarTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\ConstantTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\ControlFlowTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\DataTypeTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{#1}}
+\newcommand{\DecValTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\DocumentationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\ErrorTok}[1]{\textcolor[rgb]{0.64,0.00,0.00}{\textbf{#1}}}
+\newcommand{\ExtensionTok}[1]{#1}
+\newcommand{\FloatTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\FunctionTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\ImportTok}[1]{#1}
+\newcommand{\InformationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\KeywordTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\NormalTok}[1]{#1}
+\newcommand{\OperatorTok}[1]{\textcolor[rgb]{0.81,0.36,0.00}{\textbf{#1}}}
+\newcommand{\OtherTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{#1}}
+\newcommand{\PreprocessorTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{#1}}}
+\newcommand{\RegionMarkerTok}[1]{#1}
+\newcommand{\SpecialCharTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\SpecialStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\StringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\VariableTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\VerbatimStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\WarningTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\usepackage{graphicx}
+\makeatletter
+\def\maxwidth{\ifdim\Gin@nat@width>\linewidth\linewidth\else\Gin@nat@width\fi}
+\def\maxheight{\ifdim\Gin@nat@height>\textheight\textheight\else\Gin@nat@height\fi}
+\makeatother
+% Scale images if necessary, so that they will not overflow the page
+% margins by default, and it is still possible to overwrite the defaults
+% using explicit options in \includegraphics[width, height, ...]{}
+\setkeys{Gin}{width=\maxwidth,height=\maxheight,keepaspectratio}
+% Set default figure placement to htbp
+\makeatletter
+\def\fps@figure{htbp}
+\makeatother
+\setlength{\emergencystretch}{3em} % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\setcounter{secnumdepth}{-\maxdimen} % remove section numbering
+\ifLuaTeX
+  \usepackage{selnolig}  % disable illegal ligatures
+\fi
+\IfFileExists{bookmark.sty}{\usepackage{bookmark}}{\usepackage{hyperref}}
+\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
+\urlstyle{same} % disable monospaced font for URLs
+\hypersetup{
+  pdftitle={plataformas\_cogn},
+  pdfauthor={Alison\_Leonardo\_Michael},
+  hidelinks,
+  pdfcreator={LaTeX via pandoc}}
+
+\title{plataformas\_cogn}
+\author{Alison\_Leonardo\_Michael}
+\date{2022-12-04}
+
+\begin{document}
+\maketitle
+
+\hypertarget{trabalho-final-da-disciplina-de-plataformas-cognitivas}{%
+\subsection{Trabalho final da disciplina de Plataformas
+Cognitivas}\label{trabalho-final-da-disciplina-de-plataformas-cognitivas}}
+
+\hypertarget{anuxe1lise-exploratuxf3ria-e-criauxe7uxe3o-de-modelo-de-regressuxe3o-de-dados-de-inadimplencia-de-clientes.}{%
+\subsection{Análise exploratória e criação de modelo de regressão de
+dados de inadimplencia de
+clientes.}\label{anuxe1lise-exploratuxf3ria-e-criauxe7uxe3o-de-modelo-de-regressuxe3o-de-dados-de-inadimplencia-de-clientes.}}
+
+\hypertarget{importando-os-dados-e-visualizando-um-resumo-de-informauxe7uxf5es}{%
+\subsection{Importando os dados e visualizando um resumo de
+informações}\label{importando-os-dados-e-visualizando-um-resumo-de-informauxe7uxf5es}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\#file.url=\textquotesingle{}https://archive.ics.uci.edu/ml/machine{-}learning{-}databases/00560/SeoulBikeData.csv\textquotesingle{}}
+\CommentTok{\#file.local=file.path(\textquotesingle{}./data\textquotesingle{}, basename(file.url))}
+\CommentTok{\#download.file(url = file.url, destfile = file.local, mode = \textquotesingle{}wb\textquotesingle{})}
+\NormalTok{data }\OtherTok{\textless{}{-}} \FunctionTok{read.csv2}\NormalTok{(}\StringTok{"./data/analise\_credito\_data\_raw.csv"}\NormalTok{, }\AttributeTok{fileEncoding=}\StringTok{"latin1"}\NormalTok{, }\AttributeTok{sep =} \StringTok{","}\NormalTok{)}
+\FunctionTok{glimpse}\NormalTok{(data)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Rows: 148,670
+## Columns: 34
+## $ ID                        <int> 26958, 26980, 29073, 32543, 32720, 32891, 33~
+## $ year                      <int> 2019, 2019, 2019, 2019, 2019, 2019, 2019, 20~
+## $ loan_limit                <fct> cf, cf, cf, cf, cf, cf, cf, cf, cf, cf, ncf,~
+## $ Gender                    <fct> Male, Male, Male, Male, Male, Male, Male, Ma~
+## $ approv_in_adv             <fct> nopre, nopre, nopre, nopre, nopre, nopre, no~
+## $ loan_type                 <fct> type1, type1, type1, type1, type1, type3, ty~
+## $ loan_purpose              <fct> p4, p4, p3, p3, p1, p4, p3, p1, p4, p4, p4, ~
+## $ Credit_Worthiness         <fct> l1, l1, l1, l1, l1, l1, l1, l2, l1, l1, l1, ~
+## $ open_credit               <fct> nopc, nopc, nopc, nopc, nopc, nopc, nopc, no~
+## $ business_or_commercial    <fct> nob/c, nob/c, nob/c, nob/c, nob/c, nob/c, b/~
+## $ loan_amount               <int> 596500, 506500, 446500, 136500, 226500, 4065~
+## $ rate_of_interest          <fct> , , , , , , , , , , , , , , , , , , , , , , ~
+## $ Interest_rate_spread      <fct> , , , , , , , , , , , , , , , , , , , , , , ~
+## $ Upfront_charges           <fct> , , , , , , , , , , , , , , , , , , , , , , ~
+## $ term                      <int> 360, 360, 360, 360, 360, 360, 360, 300, 360,~
+## $ Neg_ammortization         <fct> not_neg, not_neg, not_neg, not_neg, not_neg,~
+## $ interest_only             <fct> not_int, not_int, not_int, not_int, not_int,~
+## $ lump_sum_payment          <fct> not_lpsm, not_lpsm, not_lpsm, not_lpsm, not_~
+## $ property_value            <int> NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, ~
+## $ construction_type         <fct> sb, sb, sb, sb, sb, sb, sb, sb, sb, sb, sb, ~
+## $ occupancy_type            <fct> pr, pr, pr, pr, ir, pr, pr, pr, pr, pr, pr, ~
+## $ Secured_by                <fct> home, home, home, home, home, home, home, ho~
+## $ total_units               <fct> 1U, 1U, 1U, 1U, 1U, 1U, 1U, 1U, 1U, 1U, 1U, ~
+## $ income                    <int> 7140, 4680, 8040, 5640, 7920, 0, 2280, 5820,~
+## $ credit_type               <fct> EQUI, EQUI, EQUI, EQUI, EQUI, EQUI, EQUI, EQ~
+## $ Credit_Score              <int> 805, 780, 894, 880, 650, 725, 555, 718, 834,~
+## $ co_applicant_credit_type  <fct> EXP, EXP, EXP, EXP, EXP, EXP, EXP, EXP, EXP,~
+## $ age                       <fct> 25-34, 35-44, 65-74, 65-74, 45-54, 35-44, 55~
+## $ submission_of_application <fct> not_inst, not_inst, to_inst, to_inst, to_ins~
+## $ LTV                       <fct> , , , , , , , , , , , , , , , , , , , , , , ~
+## $ Region                    <fct> North, North, North, North, North, south, No~
+## $ Security_Type             <fct> direct, direct, direct, direct, direct, dire~
+## $ Status                    <int> 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,~
+## $ dtir1                     <int> NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, ~
+\end{verbatim}
+
+\hypertarget{avaliar-balanceamento-das-bases}{%
+\subsection{Avaliar balanceamento das
+bases}\label{avaliar-balanceamento-das-bases}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\#file.url=\textquotesingle{}https://archive.ics.uci.edu/ml/machine{-}learning{-}databases/00560/SeoulBikeData.csv\textquotesingle{}}
+\CommentTok{\#file.local=file.path(\textquotesingle{}./data\textquotesingle{}, basename(file.url))}
+\CommentTok{\#download.file(url = file.url, destfile = file.local, mode = \textquotesingle{}wb\textquotesingle{})}
+\NormalTok{g }\OtherTok{\textless{}{-}} \FunctionTok{ggplot}\NormalTok{(data, }\FunctionTok{aes}\NormalTok{(Status))}
+\NormalTok{g }\SpecialCharTok{+} \FunctionTok{geom\_bar}\NormalTok{()}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{trabalho_plataformas_files/figure-latex/unnamed-chunk-2-1.pdf}
+\# Checar valores nulos
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{sapply}\NormalTok{(data, }\ControlFlowTok{function}\NormalTok{(x) }\FunctionTok{sum}\NormalTok{(}\FunctionTok{is.na}\NormalTok{(x)))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##                        ID                      year                loan_limit 
+##                         0                         0                         0 
+##                    Gender             approv_in_adv                 loan_type 
+##                         0                         0                         0 
+##              loan_purpose         Credit_Worthiness               open_credit 
+##                         0                         0                         0 
+##    business_or_commercial               loan_amount          rate_of_interest 
+##                         0                         0                         0 
+##      Interest_rate_spread           Upfront_charges                      term 
+##                         0                         0                        41 
+##         Neg_ammortization             interest_only          lump_sum_payment 
+##                         0                         0                         0 
+##            property_value         construction_type            occupancy_type 
+##                     15098                         0                         0 
+##                Secured_by               total_units                    income 
+##                         0                         0                      9150 
+##               credit_type              Credit_Score  co_applicant_credit_type 
+##                         0                         0                         0 
+##                       age submission_of_application                       LTV 
+##                         0                       200                         0 
+##                    Region             Security_Type                    Status 
+##                         0                         0                         0 
+##                     dtir1 
+##                     24121
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{colnames}\NormalTok{(data)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##  [1] "ID"                        "year"                     
+##  [3] "loan_limit"                "Gender"                   
+##  [5] "approv_in_adv"             "loan_type"                
+##  [7] "loan_purpose"              "Credit_Worthiness"        
+##  [9] "open_credit"               "business_or_commercial"   
+## [11] "loan_amount"               "rate_of_interest"         
+## [13] "Interest_rate_spread"      "Upfront_charges"          
+## [15] "term"                      "Neg_ammortization"        
+## [17] "interest_only"             "lump_sum_payment"         
+## [19] "property_value"            "construction_type"        
+## [21] "occupancy_type"            "Secured_by"               
+## [23] "total_units"               "income"                   
+## [25] "credit_type"               "Credit_Score"             
+## [27] "co_applicant_credit_type"  "age"                      
+## [29] "submission_of_application" "LTV"                      
+## [31] "Region"                    "Security_Type"            
+## [33] "Status"                    "dtir1"
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{data\_cleaned }\OtherTok{\textless{}{-}} \FunctionTok{subset}\NormalTok{(data, }\AttributeTok{select =} \SpecialCharTok{{-}}\FunctionTok{c}\NormalTok{(ID, year, term, Secured\_by , construction\_type,  Security\_Type, dtir1 ))}
+
+\FunctionTok{str}\NormalTok{(data\_cleaned)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## 'data.frame':    148670 obs. of  27 variables:
+##  $ loan_limit               : Factor w/ 3 levels "","cf","ncf": 2 2 2 2 2 2 2 2 2 2 ...
+##  $ Gender                   : Factor w/ 4 levels "Female","Joint",..: 3 3 3 3 3 3 3 3 3 3 ...
+##  $ approv_in_adv            : Factor w/ 3 levels "","nopre","pre": 2 2 2 2 2 2 2 2 2 2 ...
+##  $ loan_type                : Factor w/ 3 levels "type1","type2",..: 1 1 1 1 1 3 2 1 1 1 ...
+##  $ loan_purpose             : Factor w/ 5 levels "","p1","p2","p3",..: 5 5 4 4 2 5 4 2 5 5 ...
+##  $ Credit_Worthiness        : Factor w/ 2 levels "l1","l2": 1 1 1 1 1 1 1 2 1 1 ...
+##  $ open_credit              : Factor w/ 2 levels "nopc","opc": 1 1 1 1 1 1 1 1 1 1 ...
+##  $ business_or_commercial   : Factor w/ 2 levels "b/c","nob/c": 2 2 2 2 2 2 1 2 2 2 ...
+##  $ loan_amount              : int  596500 506500 446500 136500 226500 406500 126500 426500 566500 196500 ...
+##  $ rate_of_interest         : Factor w/ 132 levels "","0","2.125",..: 1 1 1 1 1 1 1 1 1 1 ...
+##  $ Interest_rate_spread     : Factor w/ 22517 levels "","-0.0001","-0.0002",..: 1 1 1 1 1 1 1 1 1 1 ...
+##  $ Upfront_charges          : Factor w/ 58272 levels "","0","0.03",..: 1 1 1 1 1 1 1 1 1 1 ...
+##  $ Neg_ammortization        : Factor w/ 3 levels "","neg_amm","not_neg": 3 3 3 3 3 3 3 2 3 3 ...
+##  $ interest_only            : Factor w/ 2 levels "int_only","not_int": 2 2 2 2 2 2 1 2 2 2 ...
+##  $ lump_sum_payment         : Factor w/ 2 levels "lpsm","not_lpsm": 2 2 2 2 2 2 2 2 2 1 ...
+##  $ property_value           : int  NA NA NA NA NA NA NA NA NA NA ...
+##  $ occupancy_type           : Factor w/ 3 levels "ir","pr","sr": 2 2 2 2 1 2 2 2 2 2 ...
+##  $ total_units              : Factor w/ 4 levels "1U","2U","3U",..: 1 1 1 1 1 1 1 1 1 1 ...
+##  $ income                   : int  7140 4680 8040 5640 7920 0 2280 5820 10080 3540 ...
+##  $ credit_type              : Factor w/ 4 levels "CIB","CRIF","EQUI",..: 3 3 3 3 3 3 3 3 3 3 ...
+##  $ Credit_Score             : int  805 780 894 880 650 725 555 718 834 657 ...
+##  $ co_applicant_credit_type : Factor w/ 2 levels "CIB","EXP": 2 2 2 2 2 2 2 2 2 2 ...
+##  $ age                      : Factor w/ 8 levels "","<25",">74",..: 4 5 8 8 6 5 7 8 5 3 ...
+##  $ submission_of_application: Factor w/ 2 levels "not_inst","to_inst": 1 1 2 2 2 2 2 2 2 2 ...
+##  $ LTV                      : Factor w/ 8485 levels "","0.967478198",..: 1 1 1 1 1 1 1 1 1 1 ...
+##  $ Region                   : Factor w/ 4 levels "central","North",..: 2 2 2 2 2 4 2 2 2 2 ...
+##  $ Status                   : int  1 1 1 1 1 1 1 1 1 1 ...
+\end{verbatim}
+
+\hypertarget{remover-nulos-das-variaveis-categoricas.}{%
+\section{Remover nulos das variaveis
+categoricas.}\label{remover-nulos-das-variaveis-categoricas.}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{data\_cleaned\_subset }\OtherTok{\textless{}{-}}\NormalTok{ data\_cleaned[, }\FunctionTok{c}\NormalTok{(}\StringTok{"loan\_limit"}\NormalTok{,}\StringTok{"approv\_in\_adv"}\NormalTok{, }\StringTok{"loan\_purpose"}\NormalTok{,}\StringTok{"Neg\_ammortization"}\NormalTok{, }\StringTok{"age"}\NormalTok{, }\StringTok{"submission\_of\_application"}\NormalTok{)]}
+\NormalTok{data\_cleaned\_no\_cat\_NA }\OtherTok{\textless{}{-}}\NormalTok{ data\_cleaned[}\FunctionTok{complete.cases}\NormalTok{(data\_cleaned\_subset),]}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{str}\NormalTok{(data\_cleaned\_no\_cat\_NA)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## 'data.frame':    148470 obs. of  27 variables:
+##  $ loan_limit               : Factor w/ 3 levels "","cf","ncf": 2 2 2 2 2 2 2 2 2 2 ...
+##  $ Gender                   : Factor w/ 4 levels "Female","Joint",..: 3 3 3 3 3 3 3 3 3 3 ...
+##  $ approv_in_adv            : Factor w/ 3 levels "","nopre","pre": 2 2 2 2 2 2 2 2 2 2 ...
+##  $ loan_type                : Factor w/ 3 levels "type1","type2",..: 1 1 1 1 1 3 2 1 1 1 ...
+##  $ loan_purpose             : Factor w/ 5 levels "","p1","p2","p3",..: 5 5 4 4 2 5 4 2 5 5 ...
+##  $ Credit_Worthiness        : Factor w/ 2 levels "l1","l2": 1 1 1 1 1 1 1 2 1 1 ...
+##  $ open_credit              : Factor w/ 2 levels "nopc","opc": 1 1 1 1 1 1 1 1 1 1 ...
+##  $ business_or_commercial   : Factor w/ 2 levels "b/c","nob/c": 2 2 2 2 2 2 1 2 2 2 ...
+##  $ loan_amount              : int  596500 506500 446500 136500 226500 406500 126500 426500 566500 196500 ...
+##  $ rate_of_interest         : Factor w/ 132 levels "","0","2.125",..: 1 1 1 1 1 1 1 1 1 1 ...
+##  $ Interest_rate_spread     : Factor w/ 22517 levels "","-0.0001","-0.0002",..: 1 1 1 1 1 1 1 1 1 1 ...
+##  $ Upfront_charges          : Factor w/ 58272 levels "","0","0.03",..: 1 1 1 1 1 1 1 1 1 1 ...
+##  $ Neg_ammortization        : Factor w/ 3 levels "","neg_amm","not_neg": 3 3 3 3 3 3 3 2 3 3 ...
+##  $ interest_only            : Factor w/ 2 levels "int_only","not_int": 2 2 2 2 2 2 1 2 2 2 ...
+##  $ lump_sum_payment         : Factor w/ 2 levels "lpsm","not_lpsm": 2 2 2 2 2 2 2 2 2 1 ...
+##  $ property_value           : int  NA NA NA NA NA NA NA NA NA NA ...
+##  $ occupancy_type           : Factor w/ 3 levels "ir","pr","sr": 2 2 2 2 1 2 2 2 2 2 ...
+##  $ total_units              : Factor w/ 4 levels "1U","2U","3U",..: 1 1 1 1 1 1 1 1 1 1 ...
+##  $ income                   : int  7140 4680 8040 5640 7920 0 2280 5820 10080 3540 ...
+##  $ credit_type              : Factor w/ 4 levels "CIB","CRIF","EQUI",..: 3 3 3 3 3 3 3 3 3 3 ...
+##  $ Credit_Score             : int  805 780 894 880 650 725 555 718 834 657 ...
+##  $ co_applicant_credit_type : Factor w/ 2 levels "CIB","EXP": 2 2 2 2 2 2 2 2 2 2 ...
+##  $ age                      : Factor w/ 8 levels "","<25",">74",..: 4 5 8 8 6 5 7 8 5 3 ...
+##  $ submission_of_application: Factor w/ 2 levels "not_inst","to_inst": 1 1 2 2 2 2 2 2 2 2 ...
+##  $ LTV                      : Factor w/ 8485 levels "","0.967478198",..: 1 1 1 1 1 1 1 1 1 1 ...
+##  $ Region                   : Factor w/ 4 levels "central","North",..: 2 2 2 2 2 4 2 2 2 2 ...
+##  $ Status                   : int  1 1 1 1 1 1 1 1 1 1 ...
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# impute the NAs in upfront charges by 0 because of their correspondence with the open charge variable. Every nopc value in open\_credit corresponds to an NA in  Upfront\_charges, but when you have an open credit, the bank may demand a charge from you. I think it will be appropriate to put 0 in place of the NA values}
+\NormalTok{index }\OtherTok{\textless{}{-}} \FunctionTok{is.na}\NormalTok{(data\_cleaned\_no\_cat\_NA}\SpecialCharTok{$}\NormalTok{Upfront\_charges)  }
+\NormalTok{data\_cleaned\_no\_cat\_NA[index] }\OtherTok{\textless{}{-}} \DecValTok{0}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{sapply}\NormalTok{(data\_cleaned\_no\_cat\_NA, }\ControlFlowTok{function}\NormalTok{(x) }\FunctionTok{sum}\NormalTok{(}\FunctionTok{is.na}\NormalTok{(x)))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##                loan_limit                    Gender             approv_in_adv 
+##                         0                         0                         0 
+##                 loan_type              loan_purpose         Credit_Worthiness 
+##                         0                         0                         0 
+##               open_credit    business_or_commercial               loan_amount 
+##                         0                         0                         0 
+##          rate_of_interest      Interest_rate_spread           Upfront_charges 
+##                         0                         0                         0 
+##         Neg_ammortization             interest_only          lump_sum_payment 
+##                         0                         0                         0 
+##            property_value            occupancy_type               total_units 
+##                     15098                         0                         0 
+##                    income               credit_type              Credit_Score 
+##                      8950                         0                         0 
+##  co_applicant_credit_type                       age submission_of_application 
+##                         0                         0                         0 
+##                       LTV                    Region                    Status 
+##                         0                         0                         0
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# The NAs in property\_value are heavily linked to pr in occupancy\_type. Will use median imputation for that }
+\NormalTok{df }\OtherTok{\textless{}{-}}\NormalTok{ data\_cleaned\_no\_cat\_NA }\SpecialCharTok{\%\textgreater{}\%} \FunctionTok{mutate}\NormalTok{(}\FunctionTok{across}\NormalTok{(property\_value, }\SpecialCharTok{\textasciitilde{}}\FunctionTok{replace\_na}\NormalTok{(., }\FunctionTok{median}\NormalTok{(., }\AttributeTok{na.rm=}\ConstantTok{TRUE}\NormalTok{))))}
+\NormalTok{df\_cleaned }\OtherTok{\textless{}{-}}\NormalTok{ df }\SpecialCharTok{\%\textgreater{}\%} \FunctionTok{mutate}\NormalTok{(}\FunctionTok{across}\NormalTok{(income, }\SpecialCharTok{\textasciitilde{}}\FunctionTok{replace\_na}\NormalTok{(., }\FunctionTok{median}\NormalTok{(., }\AttributeTok{na.rm =} \ConstantTok{TRUE}\NormalTok{))))}
+
+\DocumentationTok{\#\#data\_cleaned\_no\_cat\_NA$property\_value \textless{}{-} lapply(data\_cleaned\_no\_cat\_NA$property\_value, median)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{sapply}\NormalTok{(df\_cleaned, }\ControlFlowTok{function}\NormalTok{(x) }\FunctionTok{sum}\NormalTok{(}\FunctionTok{is.na}\NormalTok{(x)))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##                loan_limit                    Gender             approv_in_adv 
+##                         0                         0                         0 
+##                 loan_type              loan_purpose         Credit_Worthiness 
+##                         0                         0                         0 
+##               open_credit    business_or_commercial               loan_amount 
+##                         0                         0                         0 
+##          rate_of_interest      Interest_rate_spread           Upfront_charges 
+##                         0                         0                         0 
+##         Neg_ammortization             interest_only          lump_sum_payment 
+##                         0                         0                         0 
+##            property_value            occupancy_type               total_units 
+##                         0                         0                         0 
+##                    income               credit_type              Credit_Score 
+##                         0                         0                         0 
+##  co_applicant_credit_type                       age submission_of_application 
+##                         0                         0                         0 
+##                       LTV                    Region                    Status 
+##                         0                         0                         0
+\end{verbatim}
+
+\end{document}
