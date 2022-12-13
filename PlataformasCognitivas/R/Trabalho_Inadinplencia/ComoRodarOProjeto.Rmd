@@ -12,4 +12,6 @@ clicar em containers e na sequência escolher a opção **Registros de contêine
 
 ![Registrar o contêiner](docs/images/1.png)
 
-Na sequência 
+Na sequência devemos registrar a instância com a seguinte configuração
+
+![Registrar o contêiner](docs/images/2.png)
