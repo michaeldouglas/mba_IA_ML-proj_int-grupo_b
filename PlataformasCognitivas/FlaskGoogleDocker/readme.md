@@ -56,3 +56,36 @@ docker ps
 ```
 
 ## Clonando o ambiente do flask
+
+Para realizar o clone é necessário logar no GitHub por prefência escolhemos utilizar o Github cli
+
+Para instalar execute o comando
+
+```bash
+apt install gh
+```
+
+Para logar em sua conta execute:
+
+```bash
+gh auth login
+```
+
+Será questionado algumas opções como sugestão deixe da seguinte maneira:
+
+What account do you want to log into? - GitHub.com
+What is your preferred protocol for Git operations? - HTTPS
+Authenticate Git with your GitHub credentials? - Yes
+How would you like to authenticate GitHub CLI? - Login with a web browser
+
+Como estamos em um terminal não irá abrir o navegador automaticamente sendo assim copiei a url:
+
+https://github.com/login/device
+
+E então digite o código que é exibido no terminal:
+
+First copy your one-time code: O CODIGO QUE DEVE SER DIGITADO NO NAVEGADOR
+
+Após isso será informa que já podemos utilizar o git:
+
+ - Authentication complete.
