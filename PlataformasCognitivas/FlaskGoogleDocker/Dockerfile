@@ -13,4 +13,4 @@ COPY . ./
 RUN pip install --no-cache-dir -r requirements.txt
 
 # web service gunicorn
-CMD exec gunicorn --bind :$PORT --workers 1 --threads 8 --timeout 0 main:app
+CMD exec gunicorn --bind :8000 --workers 1 --threads 8 --timeout 0 main:app

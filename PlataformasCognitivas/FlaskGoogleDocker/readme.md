@@ -89,3 +89,19 @@ First copy your one-time code: O CODIGO QUE DEVE SER DIGITADO NO NAVEGADOR
 Após isso será informa que já podemos utilizar o git:
 
  - Authentication complete.
+
+
+### Clone do ambiente
+
+Agora execute os comandos
+
+```bash
+gh repo clone michaeldouglas/mba_IA_ML-proj_int-grupo_b
+```
+
+Na sequência:
+
+```bash
+cd mba_IA_ML-proj_int-grupo_b/PlataformasCognitivas/FlaskGoogleDocker/
+```
+
