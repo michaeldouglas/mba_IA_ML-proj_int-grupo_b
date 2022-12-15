@@ -1,0 +1,11 @@
+version: "3.8"
+services:
+  flask:
+    build: .
+    ports:
+      - 80:80
+    restart: always
+    environment:
+      APP_ENV: "dev"
+      APP_DEBUG: "False"
+      APP_PORT: 80

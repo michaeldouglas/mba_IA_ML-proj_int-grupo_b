@@ -1,3 +1,20 @@
+# Ambiente de desenvolvimento
+
+Para testar o ambiente local escolhemos utilizar o Docker Compose. Para executar basta em seu terminal inserir a seguinte instrução:
+
+```bash
+docker-compose up -d
+```
+
+Para verificar o funcionamento do container execute:
+
+```bash
+docker ps
+```
+
+E então abrir a API: http://localhost
+
+
 # Para criar a máquina no GPC
 
 Execute os itens a seguir:
