@@ -104,4 +104,25 @@ Na sequência:
 ```bash
 cd mba_IA_ML-proj_int-grupo_b/PlataformasCognitivas/FlaskGoogleDocker/
 ```
+### Build da imagem do docker e execução
 
+Para criar a imagem da API Flask execute no terminal:
+
+```bash
+docker build --tag grupob .
+```
+
+E na sequência para rodar a API execute:
+
+```bash
+docker run -d -p 80:80 grupob
+```
+
+Caso tudo esteja correto você terá como retorno
+
+```
+CONTAINER ID   IMAGE     COMMAND                  CREATED          STATUS          PORTS                NAMES
+7b50f09e703d   grupob    "/bin/sh -c 'exec gu…"   17 seconds ago   Up 16 seconds   0.0.0.0:80->80/tcp   hopeful_bell
+```
+
+Para ter certeza abra em seu terminal e verifique se existe um retorno com o status 200
