@@ -5,6 +5,8 @@ services:
     ports:
       - 80:80
     restart: always
+    volumes:
+      - .:/app
     environment:
       APP_ENV: "dev"
       APP_DEBUG: "False"
