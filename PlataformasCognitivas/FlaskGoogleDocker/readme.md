@@ -51,8 +51,11 @@ docker ps
 
 Agora criaremos um container nginx para testar o ambiente:
 
+Confirme se você encontra-se no caminho: /root/mba_IA_ML-proj_int-grupo_b/PlataformasCognitivas/FlaskGoogleDocker
+
 ```bash
-docker run --name grupob -p 80:80 -d nginx
+docker build --tag grupob .
+docker run --name grupob -p 80:80 -d grupob
 ```
 
 Pegue o ip local da máquina e acesse no navegador. Se tudo estiver correto você verá:
@@ -142,4 +145,8 @@ CONTAINER ID   IMAGE     COMMAND                  CREATED          STATUS       
 7b50f09e703d   grupob    "/bin/sh -c 'exec gu…"   17 seconds ago   Up 16 seconds   0.0.0.0:80->80/tcp   hopeful_bell
 ```
 
-Para ter certeza abra em seu terminal e verifique se existe um retorno com o status 200
+### Executando a API no Postman
+
+Obtenha o IP da instância e chame o teste da seguinte maneira:
+
+![Imagem](imgs/postman.png)
