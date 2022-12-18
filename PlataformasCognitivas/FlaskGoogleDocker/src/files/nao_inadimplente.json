@@ -1,0 +1,17 @@
+{
+  "loan_amount": 316500,
+  "rate_of_interest": 4.25,
+  "term": 360.0,
+  "property_value": 368000.0,
+  "income": 5100.0,
+  "credit_score": 544,
+  "dtir1": 53.0,
+  "loan_type_type2": 1,
+  "loan_type_type3": 0,
+  "age_35-44": 0,
+  "age_45-54": 0,
+  "age_55-64": 0,
+  "age_65-74": 0,
+  "age_<25": 0,
+  "age_>74": 0
+}

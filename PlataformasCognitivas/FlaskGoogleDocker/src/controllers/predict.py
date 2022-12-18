@@ -7,60 +7,71 @@ from flask import Response, jsonify
 
 
 class Predict:
-    """Class Titanic Predict"""
+    """Class Loan Predict"""
 
     @staticmethod
-    def validate_dict(passenger: dict) -> bool:
+    def validate_dict(loans: dict) -> bool:
         """Check dict exist all keys"""
         result = 0
 
-        if 'pclass' in passenger.keys():
+        if 'loan_amount' in loans.keys():
             result += 1
-        if 'sex_male' in passenger.keys():
+        if 'rate_of_interest' in loans.keys():
             result += 1
-        if 'age' in passenger.keys():
+        if 'term' in loans.keys():
             result += 1
-        if 'sibsp' in passenger.keys():
+        if 'property_value' in loans.keys():
             result += 1
-        if 'parch' in passenger.keys():
+        if 'income' in loans.keys():
             result += 1
-        if 'fare' in passenger.keys():
+        if 'credit_score' in loans.keys():
             result += 1
-        if 'embarked_Q' in passenger.keys():
+        if 'dtir1' in loans.keys():
             result += 1
-        if 'embarked_S' in passenger.keys():
+        if 'loan_type_type2' in loans.keys():
+            result += 1
+        if 'loan_type_type3' in loans.keys():
+            result += 1
+        if 'age_35-44' in loans.keys():
+            result += 1
+        if 'age_45-54' in loans.keys():
+            result += 1
+        if 'age_55-64' in loans.keys():
+            result += 1
+        if 'age_65-74' in loans.keys():
+            result += 1
+        if 'age_<25' in loans.keys():
+            result += 1
+        if 'age_>74' in loans.keys():
             result += 1
 
-        return result == 8
+        return result == 15
 
     @staticmethod
-    def read_data(passenger) -> any:
+    def read_data(loans) -> any:
         """Read data"""
-        model_file_name = 'files/titanic_model_randomforestclassifier.sav'
+        model_file_name = 'files/loan_decisiontreeclassifier.sav'
         app_path = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
         path_model_file_name = os.path.join(app_path, model_file_name)
 
         loaded_model = pickle.load(open(path_model_file_name, 'rb'))
 
-        y_pred = loaded_model.predict(pd.DataFrame(passenger, index=[1]))
+        y_pred = loaded_model.predict(pd.DataFrame(loans, index=[1]))
+
         result = y_pred[0]
         return json.dumps(result, default=bool)
 
     @staticmethod
-    def execute(passenger: dict) -> Response:
+    def execute(loans: dict) -> Response:
         """Execute Predict logical"""
 
-        response = {'message': 'Teste', 'error': False}
+        bool_dict = Predict.validate_dict(loans)
+
+        if bool_dict:
+            result = Predict.read_data(loans)
+
+            response = {'loan': result == 'true', 'error': False}
+        else:
+            response = {'message': 'Invalid params!', 'error': True}
 
         return jsonify(response)
-
-        # bool_dict = Predict.validate_dict(passenger)
-
-        # if bool_dict:
-        #     result = Predict.read_data(passenger)
-
-        #     response = {'survived': result == 'true', 'error': False}
-        # else:
-        #     response = {'message': 'Invalid params!', 'error': True}
-
-        # return jsonify(response)
