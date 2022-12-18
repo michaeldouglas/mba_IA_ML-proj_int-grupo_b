@@ -150,3 +150,17 @@ CONTAINER ID   IMAGE     COMMAND                  CREATED          STATUS       
 Obtenha o IP da instância e chame o teste da seguinte maneira:
 
 ![Imagem](imgs/postman.png)
+
+Caso tudo esteja correto você terá como retorno:
+
+```json
+{
+    "error": false,
+    "loan": false
+}
+```
+
+Os arquivos de exemplo para chamada da API:
+
+ - [inadimplente.json](https://github.com/michaeldouglas/mba_IA_ML-proj_int-grupo_b/blob/main/PlataformasCognitivas/FlaskGoogleDocker/src/files/inadimplente.json)
+ - [nao_inadimplente](https://github.com/michaeldouglas/mba_IA_ML-proj_int-grupo_b/blob/main/PlataformasCognitivas/FlaskGoogleDocker/src/files/nao_inadimplente.json)
