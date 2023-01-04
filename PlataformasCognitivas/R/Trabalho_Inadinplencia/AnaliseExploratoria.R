@@ -68,3 +68,26 @@ data.frame(Index = colnames(DataCredit), Count, Proportion)
 
 DataCredit %>% dim()
 
+# Renomear colunas
+DataCredit <- rename_with(DataCredit, tolower)
+
+#filtrar colunas de interesse
+DataCredit = DataCredit %>% select("loan_type",	"loan_amount",	"rate_of_interest",	"term",	
+                                   "property_value",	"income",	"credit_score",	"age",	"status",	"dtir1")
+
+# verificar nulos
+sapply(DataCredit, function(x) sum(is.na(x)))
+
+
+# remover duplicados
+DataCredit = DataCredit %>% distinct(.keep_all = TRUE)
+
+# verificar a dimensionalidade da tabela
+DataCredit %>% dim()
+
+DataCredit = DataCredit %>% fill(term, income, age, property_value, rate_of_interest, dtir1, .direction = "downup")
+
+# verificar nulos
+sapply(DataCredit, function(x) sum(is.na(x)))
+
+# separar target e features
