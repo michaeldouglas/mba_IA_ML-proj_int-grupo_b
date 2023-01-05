@@ -1,7 +1,6 @@
 library(readr)
 library(dplyr)
 library(tidyr)
-
 # URL DOS DADOS
 analise_credito_data_raw <- read_csv("data/analise_credito_data_raw.csv")
 
@@ -90,4 +89,50 @@ DataCredit = DataCredit %>% fill(term, income, age, property_value, rate_of_inte
 # verificar nulos
 sapply(DataCredit, function(x) sum(is.na(x)))
 
+# criar dummies
+unique(DataCredit$loan_type)
+unique(DataCredit$age)
+
+type1 <- ifelse(DataCredit$loan_type == "type1", 1, 0)
+type2 <- ifelse(DataCredit$loan_type == "type2", 1, 0)
+type3 <- ifelse(DataCredit$loan_type == "type3", 1, 0)
+
+
+menos_de_25 <- ifelse(DataCredit$age == "<25", 1, 0)
+de_25_a_34 <- ifelse(DataCredit$age == "25-34", 1, 0)
+de_35_a_44 <- ifelse(DataCredit$age == "35-44", 1, 0)
+de_45_a_54 <- ifelse(DataCredit$age == "45-54", 1, 0)
+de_55_a_64 <- ifelse(DataCredit$age == "55-64", 1, 0)
+de_65_a_74 <- ifelse(DataCredit$age == "65-74", 1, 0)
+acima_de_74 <- ifelse(DataCredit$age == ">74", 1, 0)
+
+# criar dataframe para modelo
+DataCredit_model = data.frame(type2, 
+                              type3, 
+                              loan_amount=DataCredit$loan_amount,
+                              rate_of_interest=DataCredit$rate_of_interest,
+                              term=DataCredit$term,
+                              property_value=DataCredit$property_value,
+                              income=DataCredit$income,
+                              credit_score=DataCredit$credit_score,
+                              menos_de_25, 
+                              de_35_a_44, 
+                              de_45_a_54, 
+                              de_55_a_64, 
+                              de_65_a_74, 
+                              acima_de_74,
+                              status=DataCredit$status,  
+                              dtir1=DataCredit$dtir1)
+
+View(DataCredit_model)
+
+
+
 # separar target e features
+# Features
+x=select (DataCredit_model,-(status))
+
+#target
+y=select(DataCredit_model,(status))
+
+
