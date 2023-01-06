@@ -2,6 +2,8 @@ library(readr)
 library(dplyr)
 library(tidyr)
 library(rpart)
+library(caTools) # split train and test
+library(e1071) # SVM
 # URL DOS DADOS
 analise_credito_data_raw <- read_csv("data/analise_credito_data_raw.csv")
 
@@ -125,26 +127,29 @@ DataCredit_model = data.frame(loan_type2,
                               status=DataCredit$status,  
                               dtir1=DataCredit$dtir1)
 
-create_train_test <- function(data, size = 0.7, train = TRUE) {
-  n_row = nrow(data)
-  total_row = size * n_row
-  train_sample = 1:total_row
-  if (train == TRUE) {
-    return (data[train_sample, ])
-  } else {
-    return (data[-train_sample, ])
-  }
-}
+# create_train_test <- function(data, size = 0.7, train = TRUE) {
+#   n_row = nrow(data)
+#   total_row = size * n_row
+#   train_sample = 1:total_row
+#   if (train == TRUE) {
+#     return (data[train_sample, ])
+#   } else {
+#     return (data[-train_sample, ])
+#   }
+# }
 
-set.seed(1000)
+# separar treino e test
+# set.seed(1000)
+# 
+# DataCredit_model$id = 1:nrow(DataCredit_model)
+# 
+# 
+# data_train <- create_train_test(DataCredit_model)
+# data_test <- dplyr::anti_join(DataCredit_model, data_train, by='id')
+# dim(data_train)
+# dim(data_test)
+# 
 
-DataCredit_model$id = 1:nrow(DataCredit_model)
-
-
-data_train <- create_train_test(DataCredit_model)
-data_test <- dplyr::anti_join(DataCredit_model, data_train, by='id')
-dim(data_train)
-dim(data_test)
 
 # separar target e features
 # Features
@@ -174,3 +179,38 @@ dim(data_test)
 # prop.table(table(test$status))
 
 #predict_model<-predict(fit_train, test_data, type = "class")
+
+# Drop the columns of the dataframe using select function where - specifies the columns to be removed from the dataframe
+x=select (DataCredit_model,-(status))
+
+#initializing the Loan_Status column to y
+y=select(DataCredit_model,(status))
+
+split_xy<-sample.split(c(x,y), SplitRatio=0.75)
+
+
+x_train<-subset(x,split_xy==T)
+y_train<-subset(y,split_xy==T)
+
+
+x_test<-subset(x,split_xy==F)
+y_test<-subset(y,split_xy==F)
+
+y_train %>% dim()
+x_train %>% dim()
+
+
+x_combine <- cbind(x_train, y_train)
+
+# fit
+fit <- svm(y_train$status ~ ., data = x_combine)
+
+p_svm = predict(fit, x_test)
+p_svm[1:5]
+
+
+final_svm<- cbind(Actual=y_test,Predicted=p_svm)
+
+
+#calculating score of the model
+mean(y_test$Loan_Status==p_svm)
