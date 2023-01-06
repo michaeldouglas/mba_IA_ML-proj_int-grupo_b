@@ -1,6 +1,7 @@
 library(readr)
 library(dplyr)
 library(tidyr)
+library(rpart)
 # URL DOS DADOS
 analise_credito_data_raw <- read_csv("data/analise_credito_data_raw.csv")
 
@@ -93,46 +94,83 @@ sapply(DataCredit, function(x) sum(is.na(x)))
 unique(DataCredit$loan_type)
 unique(DataCredit$age)
 
-type1 <- ifelse(DataCredit$loan_type == "type1", 1, 0)
-type2 <- ifelse(DataCredit$loan_type == "type2", 1, 0)
-type3 <- ifelse(DataCredit$loan_type == "type3", 1, 0)
+loan_type1 <- ifelse(DataCredit$loan_type == "type1", 1, 0)
+loan_type2 <- ifelse(DataCredit$loan_type == "type2", 1, 0)
+loan_type3 <- ifelse(DataCredit$loan_type == "type3", 1, 0)
 
 
-menos_de_25 <- ifelse(DataCredit$age == "<25", 1, 0)
-de_25_a_34 <- ifelse(DataCredit$age == "25-34", 1, 0)
-de_35_a_44 <- ifelse(DataCredit$age == "35-44", 1, 0)
-de_45_a_54 <- ifelse(DataCredit$age == "45-54", 1, 0)
-de_55_a_64 <- ifelse(DataCredit$age == "55-64", 1, 0)
-de_65_a_74 <- ifelse(DataCredit$age == "65-74", 1, 0)
-acima_de_74 <- ifelse(DataCredit$age == ">74", 1, 0)
+age_menos_de_25 <- ifelse(DataCredit$age == "<25", 1, 0)
+age_de_25_a_34 <- ifelse(DataCredit$age == "25-34", 1, 0)
+age_de_35_a_44 <- ifelse(DataCredit$age == "35-44", 1, 0)
+age_de_45_a_54 <- ifelse(DataCredit$age == "45-54", 1, 0)
+age_de_55_a_64 <- ifelse(DataCredit$age == "55-64", 1, 0)
+age_de_65_a_74 <- ifelse(DataCredit$age == "65-74", 1, 0)
+age_acima_de_74 <- ifelse(DataCredit$age == ">74", 1, 0)
 
 # criar dataframe para modelo
-DataCredit_model = data.frame(type2, 
-                              type3, 
+DataCredit_model = data.frame(loan_type2, 
+                              loan_type3, 
                               loan_amount=DataCredit$loan_amount,
                               rate_of_interest=DataCredit$rate_of_interest,
                               term=DataCredit$term,
                               property_value=DataCredit$property_value,
                               income=DataCredit$income,
                               credit_score=DataCredit$credit_score,
-                              menos_de_25, 
-                              de_35_a_44, 
-                              de_45_a_54, 
-                              de_55_a_64, 
-                              de_65_a_74, 
-                              acima_de_74,
+                              age_menos_de_25, 
+                              age_de_35_a_44, 
+                              age_de_45_a_54, 
+                              age_de_55_a_64, 
+                              age_de_65_a_74, 
+                              age_acima_de_74,
                               status=DataCredit$status,  
                               dtir1=DataCredit$dtir1)
 
-View(DataCredit_model)
+create_train_test <- function(data, size = 0.7, train = TRUE) {
+  n_row = nrow(data)
+  total_row = size * n_row
+  train_sample = 1:total_row
+  if (train == TRUE) {
+    return (data[train_sample, ])
+  } else {
+    return (data[-train_sample, ])
+  }
+}
+
+set.seed(1000)
+
+DataCredit_model$id = 1:nrow(DataCredit_model)
 
 
+data_train <- create_train_test(DataCredit_model)
+data_test <- dplyr::anti_join(DataCredit_model, data_train, by='id')
+dim(data_train)
+dim(data_test)
 
 # separar target e features
 # Features
-x=select (DataCredit_model,-(status))
+#X=select (DataCredit_model,-(status))
 
 #target
-y=select(DataCredit_model,(status))
+#y=select(DataCredit_model,(status))
 
 
+
+# features de treino
+#X=select (train,-(status))
+
+#target de treino
+#y=select(train,(status))
+
+#fit_train = rpart(data_train$status ~., data = data_train, method = "class")
+
+
+# features de teste
+#X_test=select (test,-(status))
+
+#target de teste
+#y_test=select(test,(status))
+
+# checar proporção de dados de treino
+# prop.table(table(test$status))
+
+#predict_model<-predict(fit_train, test_data, type = "class")
