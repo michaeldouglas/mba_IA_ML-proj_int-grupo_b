@@ -30,7 +30,7 @@ brew install portaudio
 
 ### Video de exemplo
 
-Vídeo de exemplo da aplica
+Vídeo de exemplo da aplicação
 
 
-[![video](card.png)](video.webm)
+[![Watch the video](card.png)](https://youtu.be/MakxptTReBk)
