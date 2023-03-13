@@ -56,7 +56,7 @@ def recomenda_produtos(id_produto, num_recomendacoes=5):
 # obter um índice aleatório do DataFrame
 indice_aleatorio = random.choice(produtos.index)
 
-# Exemplo de uso da função de recomendação para o produto com ID 42
+# Exemplo de uso da função de recomendação para o produto com ID Aleatorio
 recomendacoes = recomenda_produtos(indice_aleatorio)
 
 # definir as cores para o cabeçalho e as células do DataFrame
