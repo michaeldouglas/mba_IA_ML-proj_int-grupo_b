@@ -4,6 +4,10 @@
 .DS_Store
 .DS_Store
 bigdata_docker/data
+
+Python/Trabalho_Sistemas_De_Recomedacoes/venv
+Python/Trabalho_Sistemas_De_Recomedacoes/__pycache__
+Python/Trabalho_Sistemas_De_Recomedacoes/.env
 Python/Trabalho_Workshop_Audicao_Cognitiva/venv
 Python/Trabalho_Workshop_Audicao_Cognitiva/__pycache__
 Python/trabalho-titanic-fiap/env
