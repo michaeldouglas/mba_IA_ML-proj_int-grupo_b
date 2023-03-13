@@ -11,6 +11,7 @@ from colorama import init, Fore, Back, Style
 init()
 load_dotenv()
 
+# Carregas as variaveis
 AWS_REGION = os.getenv('AWS_REGION')
 ACCESS_KEY = os.getenv('AWS_ACCESS_KEY')
 SECRET_KEY = os.getenv('AWS_SECRET_ACCESS_KEY')
@@ -40,7 +41,6 @@ matriz_caracteristicas = vectorizer.fit_transform(produtos['produto'] + ' ' + pr
 # Calcula a similaridade entre os produtos baseados nas suas características
 similaridade = cosine_similarity(matriz_caracteristicas)
 
-
 # Função que retorna as recomendações para um produto específico
 def recomenda_produtos(id_produto, num_recomendacoes=5):
     # Obtém as linhas da matriz de similaridade que correspondem ao produto desejado
@@ -53,13 +53,11 @@ def recomenda_produtos(id_produto, num_recomendacoes=5):
     produtos_similares = produtos.iloc[produtos_similares_indices]
     return produtos_similares
 
-
 # obter um índice aleatório do DataFrame
 indice_aleatorio = random.choice(produtos.index)
 
 # Exemplo de uso da função de recomendação para o produto com ID 42
 recomendacoes = recomenda_produtos(indice_aleatorio)
-
 
 # definir as cores para o cabeçalho e as células do DataFrame
 cabecalho_cor = Back.BLUE + Fore.WHITE
