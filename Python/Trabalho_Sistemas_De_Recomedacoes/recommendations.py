@@ -1,3 +1,4 @@
+# Importacao das libs
 import boto3
 import os
 import pandas as pd
@@ -15,7 +16,8 @@ load_dotenv()
 AWS_REGION = os.getenv('AWS_REGION')
 ACCESS_KEY = os.getenv('AWS_ACCESS_KEY')
 SECRET_KEY = os.getenv('AWS_SECRET_ACCESS_KEY')
-AWS_TABLE = os.getenv('AWS_TABLE')
+AWS_TABLE  = os.getenv('AWS_TABLE')
+STOP_WORDS = os.getenv('STOP_WORDS')
 
 # Configuração do cliente DynamoDB
 dynamodb = boto3.resource(
@@ -35,7 +37,7 @@ produtos_df = pd.DataFrame(produtos_dynamo['Items'])
 produtos = produtos_df[produtos_df['clicked'] > 1]
 
 # Cria uma matriz de características dos produtos usando a frequência de palavras nos seus títulos e descrições
-vectorizer = TfidfVectorizer(stop_words='english')
+vectorizer = TfidfVectorizer(stop_words=STOP_WORDS)
 matriz_caracteristicas = vectorizer.fit_transform(produtos['produto'] + ' ' + produtos['descricao'])
 
 # Calcula a similaridade entre os produtos baseados nas suas características
